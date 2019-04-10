@@ -3,15 +3,7 @@ html {
 }
 
 body {
-  background: $purple;
-  background:#efefef;
-  &:before {
-    content: '';
-    display: block;
-    background: $grad;
-    height: 10px;
-    width: 100%;
-  }
+  background: $vanilla;
 }
 
 .inner {

@@ -1,11 +1,13 @@
-$black: #303030;
+$black: #rgba(0,0,0,0.7);
 $width: 800px;
 $purple: #262161;
 $yellow: #FFC40E;
 $pink: #EE7297;
-$green: #93FF00;
+$green: #7dce94;
 $red: #E50714;
-$grey: lighten(grey, 40%);
+$vanilla: #f6f5f3;
+$grey: #3d3d3f;
+$offwhite: #f9f8fd;
 $shad: 0 0 10px rgba(0,0,0,0.1), 0 5px 10px rgba(0,0,0,0.05);
-$grad: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%);
+$grad: linear-gradient(to right, #22c1c3, #fdbb2d);
 $verticalGrad: linear-gradient(0, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%);

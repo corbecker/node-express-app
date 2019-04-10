@@ -1,127 +1,132 @@
 .nav {
   display: flex;
   list-style: none;
-  margin: 0;
+  margin: 10px;
   padding: 0;
-  justify-content: space-between;
-  background: $black;
+  flex-direction: column;
   &__section {
-    display: flex;
+    display: none;
     &--search {
       flex: 1 1 auto;
+      order: 2;
     }
+    &--pages, &--user{
+      .nav__item{
+        padding-top: 20px;
+      }
+    }
+    &--logo{
+      display: block;
+    }
+  }
+  .is-expanded{
+    display: block;
   }
   &__item {
     display: flex;
+    justify-content: space-around;
+    span{
+      display: inline-block;
+      position: relative;
+    }
+    span:before{
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 0px;
+      border-bottom: 1px solid black;
+      bottom: -2px;
+      transform: scaleX(0);
+      transition: all 0.2s ease-in;
+    }
+    span:hover:before{
+        transform: scaleX(1);
+    }
   }
   &__link {
-    background: $black;
-    color: white;
-    border-right: 1px solid rgba(255,255,255,0.1);
+    color: $grey;
+    font-family: 'Montserrat', sans-serif;;
     text-transform: uppercase;
-    padding: 1.2rem 2rem 1rem 2rem;
-    display: block;
+    padding: 0 2rem 0 2rem;
     display: flex;
     flex-direction: column;
+    white-space: nowrap;
     align-items: center;
     justify-content: center;
     transition: transform 0.2s;
-    border-bottom: 5px solid transparent;
-    svg {
-      width: 40px;
-      transition: all 0.2s;
-      fill: white;
-      margin-bottom: 1rem;
-    }
-    &:hover, &--active {
-      border-bottom-color: rgba(0,0,0,0.2);
-      border-right-color: rgba(0,0,0,0.05);
-      svg {
-        transform: scale(1.2)
-      }
-      background: linear-gradient(90deg, #48ded4 0%, #a026bf 20%, #e82c75 60%, $yellow 85%, #48ded4 95%) fixed;
-      // background: none;
-    }
     &--logo {
-      &:hover {
-        svg {
-          transform: none;
-        }
+      width: 250px;
+    }
+  }
+  
+  .burger {
+    &--container {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      width: 4rem;
+      height: 4rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      border: 1px solid $grey;
+      padding: 1rem;
+      cursor: pointer;
+      transition: padding 100ms ease;
+      &.is-expanded {
+        padding: calc(2rem - 2px) 1rem;
       }
-      svg {
-        width: 200px;
-        margin: 0;
-      }
+    }
+    
+    &--line {
+      background-color: $grey;
+      display: inline-block;
+      height: 1px;
+      width: 100%;
     }
   }
 }
 
 
-@media all and (max-width: 1200px) {
-  .nav {
-    &__link {
-      padding-left: 1rem;
-      padding-right: 1rem;
-      svg {
-        width: 30px;
-      }
-      &--logo {
-        svg {
-          width: 100px;
-        }
-      }
-    }
-  }
-}
 
-@media all and (max-width: 900px) {
+
+@media all and (min-width: 690px) {
   .nav {
+    flex-direction: row;
     flex-wrap:wrap;
     &__section {
-      order: 1;
+      display: flex;
       &--search {
+        margin-top: 10px;
         border-top: 1px solid rgba(255,255,255,0.1);
-        order: 2;
+        order: 3;
         width: 100%;
+      }
+      &--pages, &--user{
+        .nav__item{
+          padding-top: 0;
+        }
+      }
+    }
+    .burger{
+      &--container {
+        display: none;
       }
     }
   }
 }
 
-@media all and (max-width: 650px) {
+@media all and (min-width: 901px) {
   .nav {
+    flex-wrap: nowrap;
     &__section {
-      width: 100%;
-      &--user {
-        order: -1;
-        border-bottom: 1px solid rgba(255,255,255,0.1);
-        .avatar {
-          min-width: 20px;
-          height: 20px;
-        }
-        svg {
-          display: none;
-        }
+      display: flex;
+      &--search {
+        margin-top: 0px;
+        order: unset;
       }
     }
-    &__item {
-      width: 33.333333%;
-    }
-    &__link {
-      width: 100%;
-      svg {
-        // width: 5px;
-        max-width: 100%;
-      }
-      &--logo {
-        svg {
-          width:100%;
-        }
-      }
-    }
-  }
-  .heart-count:before {
-    content: '♥️';
-    margin-right: 1rem;
   }
 }
+

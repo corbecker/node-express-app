@@ -3,7 +3,9 @@ const router = express.Router();
 
 // Do work here
 router.get('/', (req, res) => {
-  res.render('hello');
+    res.render('hello', {
+        name: 'corbin'
+    });
 });
 
 module.exports = router;

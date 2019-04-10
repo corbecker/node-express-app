@@ -113,6 +113,16 @@ __webpack_require__(1);
 
 var _bling = __webpack_require__(0);
 
+var burger = document.querySelector('.burger--container');
+var navs = document.querySelectorAll('.nav__section');
+
+burger.addEventListener('click', function (e) {
+  burger.classList.toggle('is-expanded');
+  navs.forEach(function (nav) {
+    nav.classList.toggle('is-expanded');
+  });
+});
+
 /***/ })
 /******/ ]);
 //# sourceMappingURL=App.bundle.js.map
