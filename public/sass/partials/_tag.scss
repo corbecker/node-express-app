@@ -4,6 +4,7 @@
   list-style: none;
   display: flex;
   margin-bottom: 2rem;
+  margin-top: 1rem;
   flex-wrap: wrap;
 }
 
@@ -21,11 +22,11 @@
       position: relative;
       z-index: 2;
       & + label {
-        background: $grey;
+        background: $lightBrown;
         padding: 1rem 1rem 1rem 4rem;
       }
       &:checked + label {
-        background: $yellow;
+        background: $green;
       }
     }
   }

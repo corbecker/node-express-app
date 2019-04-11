@@ -6,9 +6,12 @@
   flex-direction: column;
   &__section {
     display: none;
+    height: auto;
     &--search {
       flex: 1 1 auto;
       order: 2;
+      margin-top: 10px;
+      background-color: white;
     }
     &--pages, &--user{
       .nav__item{

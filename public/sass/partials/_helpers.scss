@@ -4,11 +4,18 @@
 }
 
 .button {
-  border: 0;
-  background: $yellow;
-  color: $black;
-  font-family: 'Panama';
+  border: 2px solid $green;;
+  color: $grey;
+  font-family: 'Montserrat';
   font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 0 $green;
+}
+
+.button:hover{
+  box-shadow: inset 0 100px 0 0 $green;
 }
 
 .avatar {

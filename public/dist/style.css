@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Crimson+Text|Montserrat|Open+Sans);@charset "UTF-8";
+@import url(https://fonts.googleapis.com/css?family=Crimson+Text|Montserrat:400,700|Open+Sans);@charset "UTF-8";
 html {
   font-size: 10px; }
 
@@ -434,7 +434,9 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 5rem;
-  font-family: 'Open Sans', sans-serif; }
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: #3d3d3f; }
 
 a {
   text-decoration: none;
@@ -490,7 +492,8 @@ input, textarea {
 
 label {
   padding: 10px 0;
-  display: block; }
+  display: block;
+  font-family: 'Montserrat', sans-serif; }
 
 .form {
   background: white;
@@ -593,12 +596,15 @@ label {
   -ms-flex-direction: column;
       flex-direction: column; }
   .nav__section {
-    display: none; }
+    display: none;
+    height: auto; }
     .nav__section--search {
       -ms-flex: 1 1 auto;
           flex: 1 1 auto;
       -ms-flex-order: 2;
-          order: 2; }
+          order: 2;
+      margin-top: 10px;
+      background-color: white; }
     .nav__section--pages .nav__item, .nav__section--user .nav__item {
       padding-top: 20px; }
     .nav__section--logo {
@@ -798,6 +804,7 @@ label {
   display: -ms-flexbox;
   display: flex;
   margin-bottom: 2rem;
+  margin-top: 1rem;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap; }
 
@@ -818,10 +825,10 @@ label {
       position: relative;
       z-index: 2; }
       .tag__choice input + label {
-        background: #3d3d3f;
+        background: #e1dbd4;
         padding: 1rem 1rem 1rem 4rem; }
       .tag__choice input:checked + label {
-        background: #FFC40E; }
+        background: #7dce94; }
   .tag__link {
     background: #FFC40E;
     color: #rgba 0, 0, 0, 0.7;
@@ -1103,11 +1110,17 @@ label {
   font-size: 0; }
 
 .button {
-  border: 0;
-  background: #FFC40E;
-  color: #rgba 0, 0, 0, 0.7;
-  font-family: 'Panama';
-  font-weight: 600; }
+  border: 2px solid #7dce94;
+  color: #3d3d3f;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  transition: all 0.3s;
+  cursor: pointer;
+  text-transform: uppercase;
+  box-shadow: inset 0 0 0 0 #7dce94; }
+
+.button:hover {
+  box-shadow: inset 0 100px 0 0 #7dce94; }
 
 .avatar {
   min-width: 50px;

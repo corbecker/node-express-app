@@ -1,13 +1,4 @@
-@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Montserrat|Open+Sans');
-
-// @font-face {
-//     font-family: 'panama';
-//     src: url('/fonts/panama-bold-webfont.woff2') format('woff2'),
-//          url('/fonts/panama-bold-webfont.woff') format('woff');
-//     font-weight: normal;
-//     font-style: normal;
-
-// }
+@import url('https://fonts.googleapis.com/css?family=Crimson+Text|Montserrat:400,700|Open+Sans');
 
 html {
   font-size:10px;
@@ -20,7 +11,9 @@ body {
 
 h1, h2, h3, h4, h5, h6, {
   font-size: 5rem;
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  color: $grey;
 }
 
 a {

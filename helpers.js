@@ -18,10 +18,10 @@ exports.staticMap = ([lng, lat]) => `https://maps.googleapis.com/maps/api/static
 exports.icon = (name) => fs.readFileSync(`./public/images/icons/${name}.svg`);
 
 // Some details about the site
-exports.siteName = `Now That's Delicious!`;
+exports.siteName = `Good Food`;
 
 exports.menu = [
-  { slug: '/stores', title: 'Eats', },
+  { slug: '/restaurants', title: 'Eats', },
   { slug: '/shops', title: 'Shops', },
   { slug: '/map', title: 'Map', },
   { slug: '/add', title: 'Add', },

@@ -1,0 +1,8 @@
+extends layout
+
+include mixins/_restaurantForm
+
+block content
+  .inner
+    h2= title
+    +restaurantForm()
