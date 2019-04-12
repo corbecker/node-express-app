@@ -10,7 +10,7 @@ exports.addRestaurant = (req, res) => {
 }
 
 exports.createRestaurant = async (req, res) => {
-  const restaurant = new Restaurant(req.body);
-  await restaurant.save();
-  res.redirect('/');
+  const restaurant = await (new Restaurant(req.body)).save();
+  req.flash('success', `Successfully Created ${restaurant.name}. Care to leave a review?`)
+  res.redirect(`/store/${restaurant.slug}`);
 }

@@ -42,6 +42,8 @@ html
                 span Log In
 
     block messages
+      script.
+        setTimeout(() => {document.querySelector('.flash-messages').remove()},3000)
       if locals.flashes
         .inner
           .flash-messages
@@ -50,7 +52,6 @@ html
               each message in flashes[category]
                 .flash(class=`flash--${category}`)
                   p.flash__text!= message
-                  button.flash__remove(onClick="this.parentElement.remove()") &times;
     .content
       block content
 
