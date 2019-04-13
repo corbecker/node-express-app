@@ -6,11 +6,12 @@ body {
   background: #f6f5f3; }
 
 .inner {
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto; }
-  @media all and (max-width: 900px) {
+  @media all and (max-width: 1000px) {
     .inner {
-      padding: 2rem; } }
+      padding-left: 2rem;
+      padding-right: 2rem; } }
 
 html {
   box-sizing: border-box; }
@@ -430,7 +431,7 @@ html {
 
 body {
   font-size: 1.5rem;
-  color: #rgba 0, 0, 0, 0.7; }
+  color: rgba(0, 0, 0, 0.7); }
 
 h1, h2, h3, h4, h5, h6 {
   font-size: 5rem;
@@ -440,7 +441,7 @@ h1, h2, h3, h4, h5, h6 {
 
 a {
   text-decoration: none;
-  color: #rgba 0, 0, 0, 0.7; }
+  color: rgba(0, 0, 0, 0.7); }
 
 p a {
   border-bottom: 2px solid #FFC40E; }
@@ -455,10 +456,12 @@ p {
   z-index: 2;
   margin: 0;
   font-size: 40px;
-  z-index: 2;
   line-height: 1.1;
   -ms-transform: skew(0, -3deg);
       transform: skew(0, -3deg);
+  border: 6px solid rgba(0, 0, 0, 0.7);
+  background-color: #e1dbd4;
+  display: inline-block;
   line-height: 1.1; }
   .title--long {
     font-size: 30px; }
@@ -473,9 +476,6 @@ p {
     z-index: -1;
     -ms-transform: skew(-5deg);
         transform: skew(-5deg); }
-  .title a {
-    border-bottom: 0;
-    background-image: linear-gradient(to right, rgba(255, 196, 14, 0.8) 100%, rgba(255, 196, 14, 0.8) 50%); }
 
 .title--single {
   max-width: 600px;
@@ -720,43 +720,41 @@ label {
   .table tr:nth-child(odd):not(:first-child) {
     background: #f7f7f7; }
   .table thead tr {
-    background: #rgba 0, 0, 0, 0.7;
+    background: rgba(0, 0, 0, 0.7);
     color: white; }
 
-.stores {
+.restaurants {
   display: -ms-flexbox;
   display: flex;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   margin: -1.25em 0 0 -1.25em; }
 
-.store {
+.restaurant {
   background: white;
   margin: 1.25em 0 0 1.25em;
   width: calc(33.3333% - 1.25em);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1), 0 5px 10px rgba(0, 0, 0, 0.05); }
-  .store--wide {
+  .restaurant--wide {
     width: 100%; }
-  .store__details {
+  .restaurant__details {
     padding: 2rem; }
-    .store__details p {
+    .restaurant__details p {
       line-height: 1.2;
       margin-bottom: 0; }
   @media all and (max-width: 850px) {
-    .store {
+    .restaurant {
       width: calc(50% - 1.25em); } }
   @media all and (max-width: 550px) {
-    .store {
+    .restaurant {
       width: 100%; } }
 
-.store__actions {
+.restaurant__actions {
   position: relative;
   z-index: 2;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.2);
-  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2);
-  margin-bottom: 50px;
   padding-top: 10px;
   padding-bottom: 20px;
+  height: 120px;
   display: -ms-flexbox;
   display: flex;
   color: white;
@@ -765,19 +763,19 @@ label {
   -ms-flex-pack: distribute;
       justify-content: space-around; }
 
-.store__action {
+.restaurant__action {
   font-size: 10px; }
-  .store__action svg {
+  .restaurant__action svg {
     width: 25px;
     fill: white; }
-  .store__action--edit a {
+  .restaurant__action--edit a {
     border-bottom: 0; }
 
-.store__hero {
+.restaurant__hero {
   position: relative;
   padding: 0 10px 0 10px;
   text-align: right; }
-  .store__hero:before {
+  .restaurant__hero:before {
     display: block;
     content: '';
     position: absolute;
@@ -785,12 +783,11 @@ label {
     width: 100%;
     top: 0;
     right: 0;
-    background: linear-gradient(45deg, #05b3d6 0%, rgba(5, 179, 214, 0) 70%), linear-gradient(135deg, #0958ec 10%, rgba(9, 88, 236, 0) 80%), linear-gradient(225deg, #d209ec 10%, rgba(210, 9, 236, 0) 80%), linear-gradient(315deg, #05e129 100%, rgba(5, 225, 41, 0) 70%);
     opacity: 0.6;
     z-index: 1;
     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%);
             clip-path: polygon(0 0, 100% 0, 100% 90%, 0% 100%); }
-  .store__hero img {
+  .restaurant__hero img {
     height: 100%;
     width: 100%;
     top: 0;
@@ -836,7 +833,7 @@ label {
         background: #7dce94; }
   .tag__link {
     background: #FFC40E;
-    color: #rgba 0, 0, 0, 0.7;
+    color: rgba(0, 0, 0, 0.7);
     display: -ms-flexbox;
     display: flex;
     padding-left: 10px;
@@ -908,7 +905,7 @@ label {
   margin: 0;
   margin-top: -3rem;
   margin-right: -5rem;
-  background: #rgba 0, 0, 0, 0.7;
+  background: rgba(0, 0, 0, 0.7);
   color: white;
   display: inline-block;
   float: right;

@@ -14,3 +14,9 @@ exports.createRestaurant = async (req, res) => {
   req.flash('success', `Successfully Created ${restaurant.name}. Care to leave a review?`)
   res.redirect(`/store/${restaurant.slug}`);
 }
+
+exports.getRestaurants = async (req, res) => {
+  // first query the DB for all stores
+  const restaurants = await Restaurant.find();
+  res.render('restaurants', { title: 'Restaurants', restaurants });
+}

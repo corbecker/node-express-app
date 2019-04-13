@@ -1,0 +1,9 @@
+extends layout
+include mixins/_restaurantCard
+
+block content 
+  .inner
+    h2= title
+    .restaurants 
+      each restaurant in restaurants
+        +restaurantCard(restaurant)

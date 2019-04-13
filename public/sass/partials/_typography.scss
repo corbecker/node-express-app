@@ -36,9 +36,11 @@ p {
   z-index: 2;
   margin:0;
   font-size: 40px;
-  z-index: 2;
   line-height:1.1;
   transform: skew(0, -3deg);
+  border: 6px solid $black;
+  background-color: $lightBrown;
+  display:inline-block;
   &--long {
     font-size: 30px;
   }
@@ -57,9 +59,7 @@ p {
   line-height:1.1;
   // inline link inside
   a {
-    border-bottom: 0;
-    $yellowa: rgba($yellow,0.8);
-    background-image: linear-gradient(to right, $yellowa 100%, $yellowa 50%);
+    // $yellowa: rgba($yellow,0.8);
   }
 }
 

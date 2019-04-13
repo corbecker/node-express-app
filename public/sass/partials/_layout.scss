@@ -7,9 +7,10 @@ body {
 }
 
 .inner {
-  max-width:900px;
+  max-width:1000px;
   margin: 0 auto;
-  @media all and (max-width: 900px) {
-    padding: 2rem;
+  @media all and (max-width: 1000px) {
+    padding-left: 2rem;
+    padding-right: 2rem;
   }
 }
