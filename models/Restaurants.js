@@ -14,7 +14,25 @@ const restaurantsSchema = new mongoose.Schema({
     type: String,
     trim: true
   },
-  tags: [String]
+  tags: [String],
+  created: {
+    type: Date,
+    default: Date.now
+  },
+  location: {
+    type: {
+      type: String,
+      default: 'Point'
+    },
+    coordinates: [{
+      type: Number,
+      required: 'You must supply a coordinate.'
+    }],
+    address: {
+      type: String,
+      required: 'You must supply an address.'
+    }
+  },
 });
 
 // pre save hook to create a slug before saving a new restaurant

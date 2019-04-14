@@ -2,7 +2,9 @@ mixin restaurantCard(restaurant = {})
   .restaurant  
     .restaurant__hero
       .restaurant__actions
-        button soon
+        .restaurant__action.restaurant__action--edit
+          a(href=`/restaurants/${restaurant._id}/edit`)
+            != h.icon('pencil')
       img(src=`/uploads/${restaurant.photo || 'restaurant.png'}`)
       h2.title
         a(href=`/restaurants/${restaurant.slug}`) #{restaurant.name}

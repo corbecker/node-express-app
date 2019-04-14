@@ -1,13 +1,21 @@
 mixin restaurantForm(restaurant = {})
-  form(action="/add" method="POST" class="card")
+  form(action=`/add/${restaurant._id || ''}` method="POST" class="card")
     label(for="name") Name
-    input(type="text" name="name")
+    input(type="text" name="name" value=restaurant.name)
     label(for="description") Description
-    textarea(name="description")
+    textarea(name="description")= restaurant.description
+    //- address, long & lat
+    label(for="address") Address
+    input(type="text" id="address" name="location[address]" value=(restaurant.location && restaurant.location.address) )
+    label(for="lng") Address Longitude
+    input(type="text" id="lng" name="location[coordinates][0]" value=restaurant.location && restaurant.location.coordinates[0])
+    label(for="lat") Address Latitude
+    input(type="text" id="lat" name="location[coordinates][1]" value=restaurant.location && restaurant.location.coordinates[1])
     - const choices = ['Vegan Only', 'Vegan Options']
+    - const tags = restaurant.tags || []
     ul.tags
       each choice in choices
         .tag.tag__choice
-          input(type="checkbox" id=choice value=choice name="tags")
+          input(type="checkbox" id=choice value=choice name="tags" checked=(tags.includes(choice)))
           label(for=choice)= choice
     input(type="submit" value="Save" class="button")

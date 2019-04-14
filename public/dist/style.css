@@ -579,9 +579,9 @@ label {
     animation-delay: 0.3s; }
   .flash--success p:before {
     background: #7dce94; }
-  .flash--error p:after {
+  .flash--error p:before {
     background: red; }
-  .flash--info p:after {
+  .flash--info p:before {
     background: #FFC40E; }
   .flash p {
     margin: 0; }
