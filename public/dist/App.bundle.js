@@ -81,8 +81,8 @@ function autoComplete(input, latInput, lngInput) {
   var dropdown = new google.maps.places.Autocomplete(input);
   dropdown.addListener('place_changed', function () {
     var place = dropdown.getPlace();
-    latInput.value = place.geometry.location.lat();
-    lngInput.value = place.geometry.location.lng();
+    // latInput.value = place.geometry.location.lat();
+    // lngInput.value = place.geometry.location.lng();
   });
   // prevent enter submitting form
   input.on('keydown', function (e) {

@@ -1,16 +1,21 @@
 mixin restaurantForm(restaurant = {})
-  form(action=`/add/${restaurant._id || ''}` method="POST" class="card")
+  form(action=`/add/${restaurant._id || ''}` method="POST" class="card" enctype="multipart/form-data")
     label(for="name") Name
     input(type="text" name="name" value=restaurant.name)
     label(for="description") Description
     textarea(name="description")= restaurant.description
+    //- Image Upload
+    label(for="photo") Photo
+      input(type="file" name="photo" id="photo" accept="image/gif,image/png, image/jpeg")
+      if restaurant.photo
+        img(src=`/uploads/${restaurant.photo}`, alt=restaurant.name width="200")
     //- address, long & lat
     label(for="address") Address
     input(type="text" id="address" name="location[address]" value=(restaurant.location && restaurant.location.address) )
-    label(for="lng") Address Longitude
-    input(type="text" id="lng" name="location[coordinates][0]" value=restaurant.location && restaurant.location.coordinates[0])
-    label(for="lat") Address Latitude
-    input(type="text" id="lat" name="location[coordinates][1]" value=restaurant.location && restaurant.location.coordinates[1])
+    //- label(for="lng") Address Longitude
+    //- input(type="text" id="lng" name="location[coordinates][0]" value=restaurant.location && restaurant.location.coordinates[0])
+    //- label(for="lat") Address Latitude
+    //- input(type="text" id="lat" name="location[coordinates][1]" value=restaurant.location && restaurant.location.coordinates[1])
     - const choices = ['Vegan Only', 'Vegan Options']
     - const tags = restaurant.tags || []
     ul.tags

@@ -33,6 +33,7 @@ const restaurantsSchema = new mongoose.Schema({
       required: 'You must supply an address.'
     }
   },
+  photo: String
 });
 
 // pre save hook to create a slug before saving a new restaurant
