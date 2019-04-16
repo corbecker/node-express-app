@@ -64,8 +64,17 @@ p {
 }
 
 .title--single {
-  max-width: 600px;
   margin-top: -9rem;
-  font-size: 10rem;
+  max-width: 600px;
+  font-size: 8rem;
   text-align: center;
+  word-wrap: normal;
+  @media all and (max-width: 600px) {
+    font-size: 6rem;
+  }
+  @media all and (max-width: 500px) {
+    margin: 20px;
+    margin-top: -9rem;
+    font-size: 4rem;
+  }
 }

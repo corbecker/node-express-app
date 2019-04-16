@@ -7,6 +7,6 @@ mixin restaurantCard(restaurant = {})
             != h.icon('pencil')
       img(src=`/uploads/${restaurant.photo || 'restaurant.png'}`)
       h2.title
-        a(href=`/restaurants/${restaurant.slug}`) #{restaurant.name}
+        a(href=`/restaurant/${restaurant.slug}`) #{restaurant.name}
     .restaurant__details
       p= restaurant.description.split(' ').slice(0, 25).join(' ')

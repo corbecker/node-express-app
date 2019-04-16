@@ -1,0 +1,20 @@
+extends layout 
+
+block content
+  .single 
+    .single__hero
+      img.single__image(src=`/uploads/${restaurant.photo || 'restaurant.png'}`)
+      h2.title.title--single
+        a(href=`/restaurant/${restaurant.slug}`) #{restaurant.name}
+
+  .single__details.inner
+    img.single__map(src=h.staticMap(restaurant.location.coordinates), alt=`${restaurant.name} map`)
+    p.single__location= restaurant.location.address
+    p= restaurant.description
+
+    if restaurant.tags  
+      ul.tags 
+        each tag in restaurant.tags
+          li.tag
+            a.tag__link(href=`/tags/${tag}`)
+              span.tag__text #{tag}

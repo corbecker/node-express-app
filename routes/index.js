@@ -21,4 +21,7 @@ router.post('/add/:id',
 
 router.get('/restaurants/:id/edit', catchErrors(restaurantController.editRestaurant));
 
+router.get('/restaurant/:slug', catchErrors(restaurantController.getRestaurant));
+
+
 module.exports = router;

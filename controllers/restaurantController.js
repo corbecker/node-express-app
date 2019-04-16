@@ -45,7 +45,7 @@ exports.addRestaurant = (req, res) => {
 exports.createRestaurant = async (req, res) => {
   const restaurant = await (new Restaurant(req.body)).save();
   req.flash('success', `Successfully Created ${restaurant.name}. Care to leave a review?`)
-  res.redirect(`/store/${restaurant.slug}`);
+  res.redirect(`/restaurant/${restaurant.slug}`);
 }
 
 exports.getRestaurants = async (req, res) => {
@@ -72,4 +72,10 @@ exports.updateRestaurant = async (req, res) => {
   req.flash('success', `Successfully updated ${restaurant.name}.`);
   res.redirect(`/restaurants/${restaurant._id}/edit`);
 
+}
+
+exports.getRestaurant = async (req, res) => {
+  const restaurant = await Restaurant.findOne({ slug: req.params.slug });
+  if(!restaurant) return next();
+  res.render('restaurant', {title: `${restaurant.name}`, restaurant });
 }
