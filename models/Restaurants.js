@@ -53,4 +53,12 @@ restaurantsSchema.pre('save', async function(next) {
     // TODO unique slugs
 });
 
+restaurantsSchema.statics.getTagsList = function() {
+    return this.aggregate([
+        { $unwind: '$tags' },
+        { $group: { _id: '$tags', count: { $sum: 1 } } },
+        { $sort: { count: -1 } }
+    ]);
+}
+
 module.exports = mongoose.model('Restaurant', restaurantsSchema);

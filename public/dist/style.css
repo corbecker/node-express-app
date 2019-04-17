@@ -857,7 +857,7 @@ label {
       .tag__choice input:checked + label {
         background: #7dce94; }
   .tag__link {
-    background: #7dce94;
+    background: #e1dbd4;
     color: rgba(0, 0, 0, 0.7);
     display: -ms-flexbox;
     display: flex;
@@ -865,9 +865,9 @@ label {
     -webkit-clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%);
             clip-path: polygon(10px 0%, 100% 1%, 100% 100%, 10px 100%, 0% 50%); }
     .tag__link--active {
-      background: #827cd2; }
+      background: #7dce94; }
       .tag__link--active .tag__text {
-        color: white; }
+        color: rgba(0, 0, 0, 0.7); }
   .tag__text {
     padding: 1rem 1rem;
     display: block; }
@@ -915,6 +915,9 @@ label {
   max-width: none;
   margin-top: -3rem;
   margin-left: -3rem; }
+  @media all and (max-width: 1100px) {
+    .single__map {
+      width: calc(100% + 6rem); } }
 
 .single__location {
   margin: 0;
@@ -926,7 +929,7 @@ label {
   float: right;
   position: relative;
   padding: 1rem; }
-  @media all and (max-width: 850px) {
+  @media all and (max-width: 1100px) {
     .single__location {
       margin-right: 0; } }
 

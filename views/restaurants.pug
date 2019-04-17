@@ -3,7 +3,13 @@ include mixins/_restaurantCard
 
 block content 
   .inner
-    h2= title
+    h2 #{title} #{tag}
+    ul.tags
+      each t in restaurantTags
+        li.tag
+          a.tag__link(href=`/restaurants/${t._id}` class=(t._id === tag ? 'tag__link--active' : ``))
+            span.tag__text= t._id
+            span.tag__count= t.count
     .restaurants 
       each restaurant in restaurants
         +restaurantCard(restaurant)
