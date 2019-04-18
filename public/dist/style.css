@@ -505,11 +505,13 @@ p {
       margin-top: -9rem;
       font-size: 4rem; } }
 
-input, textarea {
+input,
+textarea {
   width: 100%;
   padding: 10px;
   border: 1px solid #3d3d3f; }
-  input.input--error, textarea.input--error {
+  input.input--error,
+  textarea.input--error {
     border-color: red; }
 
 .hidden {
@@ -519,6 +521,9 @@ label {
   padding: 10px 0;
   display: block;
   font-family: 'Montserrat', sans-serif; }
+
+.submit {
+  margin-top: 20px; }
 
 .form {
   background: white;

@@ -49,12 +49,13 @@ exports.createRestaurant = async(req, res) => {
 }
 
 exports.getRestaurants = async(req, res) => {
-    const restaurantTags = await Restaurant.getTagsList();
     const tag = req.params.tag;
-    console.log(tag)
-        // first query the DB for all stores
-    const restaurants = await Restaurant.find();
-    res.render('restaurants', { title: 'Restaurants', restaurants, restaurantTags, tag });
+    const tagsPromise = Restaurant.getTagsList();
+    const tagQuery = tag || { $exists: true }; // tag or any restaurant with a tag property which is all of them
+    const restaurantsPromise = Restaurant.find({ tags: tagQuery });
+    const [tags, restaurants] = await Promise.all([tagsPromise, restaurantsPromise]); // multiple query promise
+    res.render('restaurants', { title: 'Restaurants', restaurants, tags, tag });
+
 }
 
 exports.editRestaurant = async(req, res) => {

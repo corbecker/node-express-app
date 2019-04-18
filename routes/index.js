@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const restaurantController = require('../controllers/restaurantController');
+const userController = require('../controllers/userController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
@@ -23,6 +24,10 @@ router.post('/add/:id',
 router.get('/restaurants/:id/edit', catchErrors(restaurantController.editRestaurant));
 
 router.get('/restaurant/:slug', catchErrors(restaurantController.getRestaurant));
+
+router.get('/login', userController.loginForm);
+router.get('/register', userController.registerForm);
+
 
 
 module.exports = router;
