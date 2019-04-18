@@ -28,6 +28,8 @@ router.get('/restaurant/:slug', catchErrors(restaurantController.getRestaurant))
 router.get('/login', userController.loginForm);
 router.get('/register', userController.registerForm);
 
+router.post('/register', userController.validateRegister);
+
 
 
 module.exports = router;
