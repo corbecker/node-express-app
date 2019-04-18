@@ -5,11 +5,11 @@ block content
     h2= title
     form.form(action="/register" method="POST")
       label(for="name") Name
-      input(type="text" name="name" )
+      input(type="text" name="name" required)
       label(for="email") Email
-      input(type="email" name="email" )
+      input(type="email" name="email" required)
       label(for="password") Password
-      input(type="password" name="password")
+      input(type="password" name="password" required)
       label(for="confirm-password") Confirm Password
-      input(type="password" name="confirm-password")
+      input(type="password" name="confirm-password" required)
       input.button.submit(type="submit" value="Register")
