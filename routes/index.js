@@ -10,7 +10,11 @@ router.get('/', catchErrors(restaurantController.getRestaurants));
 router.get('/restaurants', catchErrors(restaurantController.getRestaurants));
 router.get('/restaurants/:tag', catchErrors(restaurantController.getRestaurants));
 
-router.get('/add', restaurantController.addRestaurant);
+router.get('/add',
+    authController.isLoggedIn,
+    restaurantController.addRestaurant
+);
+
 router.post('/add',
     restaurantController.upload,
     catchErrors(restaurantController.resize),
@@ -27,6 +31,7 @@ router.get('/restaurants/:id/edit', catchErrors(restaurantController.editRestaur
 router.get('/restaurant/:slug', catchErrors(restaurantController.getRestaurant));
 
 router.get('/login', userController.loginForm);
+router.post('/login', authController.login);
 
 router.get('/register', userController.registerForm);
 router.post('/register',
@@ -35,6 +40,7 @@ router.post('/register',
     authController.login
 );
 
+router.get('/logout', authController.logout);
 
 
 module.exports = router;
