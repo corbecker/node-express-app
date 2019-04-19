@@ -51,17 +51,25 @@ exports.createRestaurant = async(req, res) => {
 
 exports.getRestaurants = async(req, res) => {
     const tag = req.params.tag;
+    const user = req.user;
     const tagsPromise = Restaurant.getTagsList();
     const tagQuery = tag || { $exists: true }; // tag or any restaurant with a tag property which is all of them
     const restaurantsPromise = Restaurant.find({ tags: tagQuery });
     const [tags, restaurants] = await Promise.all([tagsPromise, restaurantsPromise]); // multiple query promise
-    res.render('restaurants', { title: 'Restaurants', restaurants, tags, tag });
+    res.render('restaurants', { title: 'Restaurants', restaurants, tags, tag, user });
 
+}
+
+const confirmOwner = (restaurant, user) => {
+  if(!restaurant.author.equals(user._id)){
+    throw Error('You must be the owner of the restaurant to edit it.')
+  }
 }
 
 exports.editRestaurant = async(req, res) => {
     // Find restaurant by id
     const restaurant = await Restaurant.findOne({ _id: req.params.id });
+    confirmOwner(restaurant, req.user);
     res.render('editRestaurant', { title: `Edit ${restaurant.name}`, restaurant });
     // Confirm user owns restaurant
 }
@@ -80,7 +88,8 @@ exports.updateRestaurant = async(req, res) => {
 }
 
 exports.getRestaurant = async(req, res) => {
-    const restaurant = await Restaurant.findOne({ slug: req.params.slug });
+
+    const restaurant = await Restaurant.findOne({ slug: req.params.slug }).populate('author');
     if (!restaurant) return next();
     res.render('restaurant', { title: `${restaurant.name}`, restaurant });
 }

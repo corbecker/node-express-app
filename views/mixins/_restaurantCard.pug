@@ -2,9 +2,10 @@ mixin restaurantCard(restaurant = {})
   .restaurant  
     .restaurant__hero
       .restaurant__actions
-        .restaurant__action.restaurant__action--edit
-          a(href=`/restaurants/${restaurant._id}/edit`)
-            != h.icon('pencil')
+        if user && restaurant.author.equals(user._id)
+          .restaurant__action.restaurant__action--edit
+            a(href=`/restaurants/${restaurant._id}/edit`)
+              != h.icon('pencil')
       img(src=`/uploads/${restaurant.photo || 'restaurant.png'}`)
       h2.title
         a(href=`/restaurant/${restaurant.slug}`) #{restaurant.name}
