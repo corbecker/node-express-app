@@ -43,6 +43,7 @@ exports.addRestaurant = (req, res) => {
 }
 
 exports.createRestaurant = async(req, res) => {
+    req.body.author = req.user._id;
     const restaurant = await (new Restaurant(req.body)).save();
     req.flash('success', `Successfully Created ${restaurant.name}. Care to leave a review?`)
     res.redirect(`/restaurant/${restaurant.slug}`);
