@@ -58,10 +58,14 @@ restaurantsSchema.pre('save', async function(next) {
     // TODO unique slugs
 });
 
-// Defining Indexes
+// Defining Indexes for searching 
 restaurantsSchema.index({
   name: 'text',
   description: 'text'
+});
+
+restaurantsSchema.index({
+  location: '2dsphere'
 });
 
 restaurantsSchema.statics.getTagsList = function() {

@@ -113,3 +113,23 @@ exports.searchRestaurants = async (req, res) => {
   res.json(restaurants);
 
 }
+
+exports.mapRestaurants = async (req, res) => {
+  const coords = [req.query.lng, req.query.lat].map(parseFloat);
+  const q = {
+    location: {
+      $near: {
+        $geometry: {
+          type: 'Point',
+          coordinates: coords
+        }
+      }
+    }
+  }
+  const restaurants = await Restaurant.find(q).select('slug name description location').limit(10);
+  res.json(restaurants);
+}
+
+exports.mapPage = (req, res) => {
+  res.render('map', {title: 'Restaurants Map'})
+}

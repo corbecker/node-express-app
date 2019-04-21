@@ -57,9 +57,12 @@ router.post('/account/reset/:token',
     catchErrors(authController.update)
 );
 
+router.get('/map', restaurantController.mapPage);
+
 
 // API Endpoints
 router.get('/api/search', catchErrors(restaurantController.searchRestaurants));
+router.get('/api/restaurants/near', catchErrors(restaurantController.mapRestaurants))
 
 
 module.exports = router;
