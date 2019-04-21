@@ -7,7 +7,8 @@ body {
 
 .inner {
   max-width: 1000px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  margin-bottom: 10rem; }
   @media all and (max-width: 1000px) {
     .inner {
       padding-left: 2rem;

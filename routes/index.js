@@ -58,4 +58,8 @@ router.post('/account/reset/:token',
 );
 
 
+// API Endpoints
+router.get('/api/search', catchErrors(restaurantController.searchRestaurants));
+
+
 module.exports = router;

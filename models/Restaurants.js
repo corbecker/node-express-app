@@ -58,6 +58,12 @@ restaurantsSchema.pre('save', async function(next) {
     // TODO unique slugs
 });
 
+// Defining Indexes
+restaurantsSchema.index({
+  name: 'text',
+  description: 'text'
+});
+
 restaurantsSchema.statics.getTagsList = function() {
     return this.aggregate([
         { $unwind: '$tags' },

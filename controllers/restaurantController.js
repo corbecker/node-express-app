@@ -93,3 +93,22 @@ exports.getRestaurant = async(req, res) => {
     if (!restaurant) return next();
     res.render('restaurant', { title: `${restaurant.name}`, restaurant });
 }
+
+exports.searchRestaurants = async (req, res) => {
+  const restaurants = await Restaurant
+  // find by query
+  .find({
+    $text: {
+      $search: req.query.q,
+    }
+  }, {
+    score: { $meta: 'textScore' }
+  })
+  //sort by score
+  .sort({
+    score: { $meta: 'textScore' }
+  })
+  // limit results
+  .limit(5);
+
+}
