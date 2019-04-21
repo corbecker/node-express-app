@@ -10,7 +10,7 @@
     "created": "2017-03-08T17:04:19.860Z",
     "location": {
       "address": "McGuinness Traditional Take Away, Camden Street Lower, Dublin Southside, Dublin 2, Ireland",
-      "coordinates": [-6.265463899999986, 53.3359149],
+      "coordinates": [53.3359149, -6.265463899999986],
       "type": "Point"
     }
   },
@@ -25,7 +25,7 @@
     "created": "2017-03-08T17:05:50.134Z",
     "location": {
       "address": "Sova Vegan Butcher, Pleasants Street, Saint Kevin's, Dublin, Ireland",
-      "coordinates": [-6.266310900000008, 53.3354991],
+      "coordinates": [53.3354991, -6.266310900000008],
       "type": "Point"
     }
   },
@@ -40,7 +40,7 @@
     "created": "2017-03-08T17:07:14.681Z",
     "location": {
       "address": "Cornucopia, Wicklow Street, Dublin, Ireland",
-      "coordinates": [-6.2614174000000276, 53.3430943],
+      "coordinates": [53.3430943, -6.2614174000000276],
       "type": "Point"
     }
   },
@@ -55,7 +55,7 @@
     "created": "2017-03-08T17:08:37.131Z",
     "location": {
       "address": "Umi Falafel, Dame Street, Dublin 2, Ireland",
-      "coordinates": [-6.265494100000069, 53.34406569999999],
+      "coordinates": [53.34406569999999, -6.265494100000069],
       "type": "Point"
     }
   },
@@ -70,7 +70,7 @@
     "created": "2017-03-08T19:12:03.957Z",
     "location": {
       "address": "Veginity, Dorset Street Upper, Inns Quay, Dublin, Ireland",
-      "coordinates": [-6.265832700000033, 53.3553896],
+      "coordinates": [53.3553896, -6.265832700000033],
       "type": "Point"
     }
   },
@@ -85,7 +85,7 @@
     "created": "2017-03-08T19:26:39.863Z",
     "location": {
       "address": "Vish.Shop, Blessington Street, Inns Quay, Dublin, Ireland",
-      "coordinates": [-6.2652835000000096, 53.3561163],
+      "coordinates": [53.3561163, -6.2652835000000096],
       "type": "Point"
     }
   },
@@ -100,7 +100,7 @@
     "created": "2017-03-08T19:28:21.738Z",
     "location": {
       "address": "The Rolling Donut, South King Street, Dublin 2, Ireland",
-      "coordinates": [-6.261085500000036, 53.3401744],
+      "coordinates": [53.3401744, -6.261085500000036],
       "type": "Point"
     }
   }

@@ -110,5 +110,6 @@ exports.searchRestaurants = async (req, res) => {
   })
   // limit results
   .limit(5);
+  res.json(restaurants);
 
 }
