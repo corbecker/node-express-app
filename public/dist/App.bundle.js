@@ -2753,11 +2753,16 @@ function loadPlaces(map) {
   var lat = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 53.3498;
   var lng = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : -6.2603;
 
+  console.log(lat, lng);
   _axios2.default.get('/api/restaurants/near?lat=' + lat + '&lng=' + lng).then(function (res) {
     var restaurants = res.data;
     if (!restaurants.length) {
       return;
     }
+
+    //bounds
+    var bounds = new google.maps.LatLngBounds();
+    var infoWindow = new google.maps.InfoWindow();
 
     var markers = restaurants.map(function (place) {
       var _place$location$coord = _slicedToArray(place.location.coordinates, 2),
@@ -2765,10 +2770,23 @@ function loadPlaces(map) {
           placeLng = _place$location$coord[1];
 
       var position = { lat: placeLat, lng: placeLng };
+      bounds.extend(position);
       var marker = new google.maps.Marker({ map: map, position: position });
       marker.place = place;
       return marker;
     });
+
+    markers.forEach(function (marker) {
+      return marker.addListener('click', function () {
+        var html = '\n          <div class="popup>\n            <a href="/restaurant/' + this.place.slug + '">\n              <img src="/uploads/' + (this.place.photo || 'restaurant.png') + '" width="300" alt="' + this.place.name + '" />\n              <p>' + this.place.name + ' - ' + this.place.location.address + '</p>\n            </a>\n          </div>\n          ';
+        infoWindow.setContent(html);
+        infoWindow.open(map, marker);
+      });
+    });
+
+    //zoom map to fit markers
+    map.setCenter(bounds.getCenter());
+    map.fitBounds(bounds);
   });
 }
 
@@ -2779,6 +2797,10 @@ function makeMap(mapDiv) {
 
   var input = (0, _bling.$)('[name="geolocate"]');
   var autocomplete = new google.maps.places.Autocomplete(input);
+  autocomplete.addListener('place_changed', function () {
+    var place = autocomplete.getPlace();
+    loadPlaces(map, place.geometry.location.lat(), place.geometry.location.lng());
+  });
 }
 
 exports.default = makeMap;
