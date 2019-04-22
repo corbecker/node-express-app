@@ -59,10 +59,13 @@ router.post('/account/reset/:token',
 
 router.get('/map', restaurantController.mapPage);
 
+router.get('/hearts', authController.isLoggedIn, catchErrors(restaurantController.hearted));
+
 
 // API Endpoints
 router.get('/api/search', catchErrors(restaurantController.searchRestaurants));
 router.get('/api/restaurants/near', catchErrors(restaurantController.mapRestaurants))
+router.post('/api/restaurants/:id/heart', catchErrors(restaurantController.heart));
 
 
 module.exports = router;

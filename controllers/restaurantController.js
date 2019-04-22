@@ -3,6 +3,7 @@ const Restaurant = mongoose.model('Restaurant');
 const multer = require('multer'); // handles image uploading 
 const jimp = require('jimp'); //resizes images
 const uuid = require('uuid'); //uniqure identifiers for images
+const User = mongoose.model('User');
 
 const multerOptions = {
     storage: multer.memoryStorage(),
@@ -133,4 +134,20 @@ exports.mapRestaurants = async (req, res) => {
 
 exports.mapPage = (req, res) => {
   res.render('map', {title: 'Restaurants Map'})
+}
+
+exports.heart = async (req, res) => {
+  const hearts = req.user.hearts.map(obj => obj.toString());
+  const operator = hearts.includes(req.params.id) ? '$pull' : '$addToSet';
+  const user = await User.findByIdAndUpdate(req.user._id,
+    { [operator]: {hearts: req.params.id }},
+    { new: true }
+  );
+  res.json(user);
+}
+
+exports.hearted = async (req, res) => {
+  const userHearts = req.user.hearts;
+  const restaurants = await Restaurant.find({ _id: userHearts });
+  res.render('hearts', {title: 'Hearts', restaurants});
 }

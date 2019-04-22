@@ -1,12 +1,19 @@
 mixin restaurantCard(restaurant = {})
   .restaurant  
     .restaurant__hero
+      img(src=`/uploads/${restaurant.photo || 'restaurant.png'}`)
       .restaurant__actions
+        if user
+          .restaurant__action.restaurant__action--heart
+            form.heart(action=`/api/restaurants/${restaurant._id}/heart` method="POST")
+              - const heartStrings = user.hearts.map(obj => obj.toString())
+              - const heartClass = heartStrings.includes(restaurant._id.toString()) ? 'heart__button--hearted' : ''
+              button.heart__button(type="submit" name="heart" class=heartClass)
+                != h.icon('heart')
         if user && restaurant.author.equals(user._id)
           .restaurant__action.restaurant__action--edit
             a(href=`/restaurants/${restaurant._id}/edit`)
               != h.icon('pencil')
-      img(src=`/uploads/${restaurant.photo || 'restaurant.png'}`)
       h2.title
         a(href=`/restaurant/${restaurant.slug}`) #{restaurant.name}
     .restaurant__details

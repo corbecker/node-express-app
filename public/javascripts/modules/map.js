@@ -50,6 +50,9 @@ function loadPlaces(map, lat = 53.3498, lng = -6.2603){
       map.fitBounds(bounds);
 
     })
+    .catch(err => {
+      console.log(err);
+    })
 }
 
 function makeMap(mapDiv){
