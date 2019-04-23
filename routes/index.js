@@ -3,6 +3,7 @@ const router = express.Router();
 const restaurantController = require('../controllers/restaurantController');
 const userController = require('../controllers/userController');
 const authController = require('../controllers/authController');
+const reviewController = require('../controllers/reviewController');
 const { catchErrors } = require('../handlers/errorHandlers');
 
 // Do work here
@@ -60,6 +61,8 @@ router.post('/account/reset/:token',
 router.get('/map', restaurantController.mapPage);
 
 router.get('/hearts', authController.isLoggedIn, catchErrors(restaurantController.hearted));
+
+router.post('/reviews/:id', authController.isLoggedIn, catchErrors(reviewController.addReview));
 
 
 // API Endpoints
