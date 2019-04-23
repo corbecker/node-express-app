@@ -10,12 +10,21 @@ const mapOptions = {
 }
 
 function loadPlaces(map, lat = 53.3498, lng = -6.2603){
-  console.log(lat, lng);
   axios
     .get(`/api/restaurants/near?lat=${lat}&lng=${lng}`)
     .then(res => {
       const restaurants = res.data;
+      const mapContainer = document.querySelector('.map');
+      const mapInput = document.querySelector('#map');
+      
       if(!restaurants.length){
+        const errMessage = document.createElement('div');
+        errMessage.classList.add('search__result');
+        errMessage.textContent = 'No restaurants listed there yet.'
+        mapContainer.insertBefore(errMessage, mapInput);
+        setTimeout(()=> {
+          errMessage.remove();
+        }, 2000)
         return;
       }
       
