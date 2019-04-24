@@ -2,6 +2,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise; // use built in ES6 Promise
 const slug = require('slugs');
 
+
 // MongoDB using strict schema so any data passed that isnt expected will be thrown away.
 const restaurantsSchema = new mongoose.Schema({
     name: {
@@ -35,10 +36,16 @@ const restaurantsSchema = new mongoose.Schema({
     },
     photo: String,
     author: {
-      type: mongoose.Schema.ObjectId,
-      ref: 'User',
-      required: 'You must supply an author.'
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: 'You must supply an author.'
     }
+}, { toJSON: { virtuals: true }, toObject: { virtuals: true } });
+
+restaurantsSchema.virtual('reviews', {
+    ref: 'Review',
+    localField: '_id',
+    foreignField: 'restaurant'
 });
 
 // pre save hook to create a slug before saving a new restaurant
@@ -60,12 +67,12 @@ restaurantsSchema.pre('save', async function(next) {
 
 // Defining Indexes for searching 
 restaurantsSchema.index({
-  name: 'text',
-  description: 'text'
+    name: 'text',
+    description: 'text'
 });
 
 restaurantsSchema.index({
-  location: '2dsphere'
+    location: '2dsphere'
 });
 
 restaurantsSchema.statics.getTagsList = function() {
@@ -75,5 +82,16 @@ restaurantsSchema.statics.getTagsList = function() {
         { $sort: { count: -1 } }
     ]);
 }
+
+restaurantsSchema.set('toObject', { virtuals: true })
+restaurantsSchema.set('toJSON', { virtuals: true })
+
+function autopopulate(next) {
+    this.populate('reviews');
+    next();
+}
+
+restaurantsSchema.pre('find', autopopulate);
+restaurantsSchema.pre('findOne', autopopulate);
 
 module.exports = mongoose.model('Restaurant', restaurantsSchema);
