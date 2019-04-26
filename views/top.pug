@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  .inner
+    h2 Top #{restaurants.length} Restaurants
+    table.table
+      thead
+        td Photo 
+        td Ranking
+        td Name
+        td Reviews
+        td Average Rating
+      each restaurant, i in restaurants
+        tr
+          td 
+            a(href=`/restaurants/${restaurant.slug}`)
+              img(width=200 src=`/uploads/${restaurant.photo || 'restaurant.png'}` alt=restaurant.name)
+          td #{i + 1}
+          td 
+            a(href=`/restaurant/${restaurant.slug}`)= restaurant.name
+          td= restaurant.reviews.length
+          td #{Math.round(restaurant.averageRating * 10) /10} / 5
