@@ -91,6 +91,28 @@ function autopopulate(next) {
     next();
 }
 
+restaurantsSchema.statics.getTopRestaurants = function() {
+  // aggregate returns a promise
+  return this.aggregate([
+    // lookup restaurants and poulate reviews
+    { 
+      $lookup: {
+        from: 'reviews',
+        localField: '_id',
+        foreignField: 'restaurant',
+        as: 'reviews'
+      }
+    }
+    //filter for only items that have 2 or more reviews
+
+    // add the average reviews field
+
+    //sort it by our new field highest reviews first 
+
+    //limit to at most 10
+  ]);
+};
+
 restaurantsSchema.pre('find', autopopulate);
 restaurantsSchema.pre('findOne', autopopulate);
 

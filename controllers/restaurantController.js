@@ -151,3 +151,9 @@ exports.hearted = async (req, res) => {
   const restaurants = await Restaurant.find({ _id: userHearts });
   res.render('hearts', {title: 'Hearts', restaurants});
 }
+
+exports.getTopRestaurants = async (req, res) => {
+  const restaurants = await Restaurant.getTopRestaurants();
+  res.json(restaurants)
+  // res.render('topRestaurants', {restaurants, title: 'Top Restaurants'});
+}
