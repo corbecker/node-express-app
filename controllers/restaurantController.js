@@ -55,9 +55,29 @@ exports.getRestaurants = async(req, res) => {
     const user = req.user;
     const tagsPromise = Restaurant.getTagsList();
     const tagQuery = tag || { $exists: true }; // tag or any restaurant with a tag property which is all of them
-    const restaurantsPromise = Restaurant.find({ tags: tagQuery });
-    const [tags, restaurants] = await Promise.all([tagsPromise, restaurantsPromise]); // multiple query promise
-    res.render('restaurants', { title: 'Restaurants', restaurants, tags, tag, user });
+
+    const page = req.params.page || 1; //page or 1 for homepage
+    const limit = 4;
+    const skip = (page * limit) - limit; // the amount of restaurants to skip to get to that page
+    const restaurantsPromise = Restaurant
+      .find({ tags: tagQuery })
+      .skip(skip)
+      .limit(limit)
+      .sort({created: 'desc'})
+
+    const countPromise = Restaurant.count();
+    
+    const [tags, restaurants, count] = await Promise.all([tagsPromise, restaurantsPromise, countPromise]); // multiple query promise
+
+    const pages = Math.ceil(count / limit);
+
+    if(!restaurants.length && skip){
+      req.flash('info', "Page doesn't exist");
+      res.redirect(`/restaurants/page/${pages}`);
+      return;
+    }
+
+    res.render('restaurants', { title: 'Restaurants', restaurants, tags, tag, user, page, count, pages });
 
 }
 

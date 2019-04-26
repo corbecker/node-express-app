@@ -9,6 +9,7 @@ const { catchErrors } = require('../handlers/errorHandlers');
 // Do work here
 router.get('/', catchErrors(restaurantController.getRestaurants));
 router.get('/restaurants', catchErrors(restaurantController.getRestaurants));
+router.get('/restaurants/page/:page', catchErrors(restaurantController.getRestaurants));
 router.get('/restaurants/:tag', catchErrors(restaurantController.getRestaurants));
 
 router.get('/add',
