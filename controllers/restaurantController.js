@@ -57,7 +57,7 @@ exports.getRestaurants = async(req, res) => {
     const tagQuery = tag || { $exists: true }; // tag or any restaurant with a tag property which is all of them
 
     const page = req.params.page || 1; //page or 1 for homepage
-    const limit = 4;
+    const limit = 6;
     const skip = (page * limit) - limit; // the amount of restaurants to skip to get to that page
     const restaurantsPromise = Restaurant
       .find({ tags: tagQuery })
