@@ -22,7 +22,6 @@ exports.siteName = `Good Food`;
 
 exports.menu = [
   { slug: '/restaurants', title: 'Eats', },
-  { slug: '/shops', title: 'Shops', },
   { slug: '/map', title: 'Map', },
   { slug: '/add', title: 'Add', },
   { slug: '/top', title: 'Top', },
